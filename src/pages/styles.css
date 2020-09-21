@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic&subset=latin,latin-ext");
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.profile-img {
+  text-align: center;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+.profile-title > p {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.profile-description > p {
+  font-size: 2.25rem;
+  text-align: center;
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+}
