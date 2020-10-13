@@ -19,7 +19,7 @@ export default function Home() {
     query {
       fileName: file(relativePath: { eq: "profile.png" }) {
         childImageSharp {
-          fixed(width: 252, height: 252) {
+          fixed(width: 200, height: 200) {
             ...GatsbyImageSharpFixed
           }
         }
