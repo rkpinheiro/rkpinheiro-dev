@@ -1,23 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic&subset=latin,latin-ext");
 body {
   font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .profile-img {
   text-align: center;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
 }
 
 .profile-title > p {
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: center;
 }
 
-.profile-description > p {
-  font-size: 2.25rem;
+.profile-social {
   text-align: center;
-  max-width: 768px;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+.profile-social > a {
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 1.5rem;
+  color: black;
 }

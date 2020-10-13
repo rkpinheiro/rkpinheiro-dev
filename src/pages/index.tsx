@@ -1,6 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby"
 import { FixedObject } from "gatsby-image"
 import React from "react"
+import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 import Image from "../components/image"
 
@@ -28,19 +29,40 @@ export default function Home() {
   `)
 
   return (
-    <>
-      <div className="profile-img">
-        <Image fixed={data.fileName.childImageSharp.fixed} rounded />
+    <div className="container">
+      <div className="profile">
+        <div className="profile-img">
+          <Image fixed={data.fileName.childImageSharp.fixed} rounded />
+        </div>
+        <div className="profile-title">
+          <p>
+            I'm <b>Rurik Pinheiro</b>
+          </p>
+        </div>
+        <div className="profile-social">
+          <a
+            href="https://github.com/rkpinheiro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://twitter.com/rkpinheiro"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/rkpinheiro/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin />
+          </a>
+        </div>
       </div>
-      <div className="profile-title">
-        <p>Hi, there 👋</p>
-      </div>
-      <div className="profile-description">
-        <p>
-          Welcome to my personal page. I'm <b>Rurik Pinheiro</b> and this is
-          where I put all my programming stuffs.
-        </p>
-      </div>
-    </>
+    </div>
   )
 }
