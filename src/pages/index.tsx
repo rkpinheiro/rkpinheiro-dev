@@ -1,16 +1,16 @@
 import { useStaticQuery, graphql } from "gatsby"
-import { FixedObject } from "gatsby-image"
 import React from "react"
 import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa"
 
 import Image from "../components/image"
 
 import "./styles.css"
+import { IGatsbyImageData, getImage } from "gatsby-plugin-image"
 
 interface GraphqlQuery {
   fileName: {
     childImageSharp: {
-      fixed: FixedObject
+      gatsbyImageData: IGatsbyImageData
     }
   }
 }
@@ -20,20 +20,21 @@ export default function Home() {
     query {
       fileName: file(relativePath: { eq: "profile.png" }) {
         childImageSharp {
-          fixed(width: 200, height: 200) {
-            ...GatsbyImageSharpFixed
-          }
+          gatsbyImageData(width: 200, height: 200, placeholder: BLURRED)
         }
       }
     }
   `)
+  const profileImg = getImage(data.fileName.childImageSharp)
 
   return (
     <div className="container">
       <div className="profile">
-        <div className="profile-img">
-          <Image fixed={data.fileName.childImageSharp.fixed} rounded />
-        </div>
+        {profileImg && (
+          <div className="profile-img">
+            <Image image={profileImg} rounded />
+          </div>
+        )}
         <div className="profile-title">
           <p>
             I'm <b>Rurik Pinheiro</b>

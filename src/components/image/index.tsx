@@ -1,15 +1,16 @@
 import React from "react"
-import Img, { FixedObject } from "gatsby-image"
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image"
 import "./styles.css"
 import classnames from "classnames"
 
 interface ImgRoundedProps {
-  fixed: FixedObject
+  image: IGatsbyImageData
   rounded?: boolean
+  alt?: string
 }
 
-const Image = ({ fixed, rounded = false }: ImgRoundedProps) => (
-  <Img fixed={fixed} className={classnames({ rounded })} />
+const Image = ({ image, alt = "", rounded = false }: ImgRoundedProps) => (
+  <GatsbyImage className={classnames({ rounded })} image={image} alt={alt} />
 )
 
 export default Image
