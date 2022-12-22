@@ -1,42 +1,47 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "name": "rkpinheiro-dev",
+  "private": false,
+  "description": "Rurik's Personal Website",
+  "version": "1.0.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "lint": "eslint --ext .tsx",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.1",
+    "@mui/styled-engine-sc": "^5.11.0",
     "classnames": "^2.3.2",
     "gatsby": "^5.3.3",
     "gatsby-plugin-google-tagmanager": "^5.3.1",
-    "gatsby-plugin-sharp": "^5.3.2",
     "gatsby-plugin-image": "3.3.2",
+    "gatsby-plugin-sharp": "^5.3.2",
     "gatsby-source-filesystem": "^5.3.1",
     "gatsby-transformer-sharp": "^5.3.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-icons": "^4.7.1"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^7.0.1",
     "prettier": "2.8.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/rkpinheiro/rkpinheiro-dev"
   },
   "volta": {
     "node": "18.12.1",
     "npm": "9.2.0"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/rkpinheiro/rkpinheiro-dev/issues"
   }
 }

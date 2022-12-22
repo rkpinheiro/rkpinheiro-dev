@@ -1,69 +1,59 @@
-import { useStaticQuery, graphql } from "gatsby"
-import React from "react"
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa"
-
-import Image from "../components/image"
+import React, { useState } from "react"
 
 import "./styles.css"
-import { IGatsbyImageData, getImage } from "gatsby-plugin-image"
+import { Container } from "@mui/system"
+import { ProfileInfo } from "../components/ProfileInfo"
+import { Theme, ThemeProvider, createTheme } from "@mui/material/styles"
+import { ThemeSwicher } from "../components/ThemeSwicher"
+import { AppBar, Toolbar, Box } from "@mui/material"
 
-interface GraphqlQuery {
-  fileName: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData
-    }
-  }
-}
+const defaultTheme = createTheme({
+  palette: { mode: "light" },
+})
+
+const createNewTheme = (mode: "dark" | "light") =>
+  createTheme({ ...defaultTheme, ...{ palette: { mode } } })
 
 export default function Home() {
-  const data: GraphqlQuery = useStaticQuery(graphql`
-    query {
-      fileName: file(relativePath: { eq: "profile.png" }) {
-        childImageSharp {
-          gatsbyImageData(width: 200, height: 200, placeholder: BLURRED)
-        }
-      }
-    }
-  `)
-  const profileImg = getImage(data.fileName.childImageSharp)
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
+
+  const handleChange = () => {
+    setTheme(t =>
+      t.palette.mode === "dark"
+        ? createNewTheme("light")
+        : createNewTheme("dark")
+    )
+  }
 
   return (
-    <div className="container">
-      <div className="profile">
-        {profileImg && (
-          <div className="profile-img">
-            <Image image={profileImg} rounded />
-          </div>
-        )}
-        <div className="profile-title">
-          <p>
-            I'm <b>Rurik Pinheiro</b>
-          </p>
-        </div>
-        <div className="profile-social">
-          <a
-            href="https://github.com/rkpinheiro"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://twitter.com/rkpinheiro"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaTwitter />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/rkpinheiro/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <AppBar position="fixed" color="transparent">
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box sx={{ flexGrow: 1 }}></Box>
+            <Box>
+              <ThemeSwicher
+                onChange={handleChange}
+                checked={theme.palette.mode === "dark"}
+              />
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+      <Container
+        maxWidth="xl"
+        sx={{
+          bgcolor: "background.default",
+          color: "text.primary",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
+        <ProfileInfo />
+      </Container>
+    </ThemeProvider>
   )
 }
