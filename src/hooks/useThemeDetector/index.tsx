@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 
 export const useThemeDetector = () => {
+  const isBrowser = typeof window !== "undefined"
   const getCurrentTheme = () =>
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+    isBrowser && window.matchMedia("(prefers-color-scheme: dark)").matches
   const [isDarkTheme, setIsDarkTheme] = useState(getCurrentTheme())
   const mqListener = e => {
     setIsDarkTheme(e.matches)
