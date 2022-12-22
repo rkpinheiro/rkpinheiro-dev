@@ -17,6 +17,7 @@ const StyledWrapper = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  textAlign: "center",
 }))
 
 export const ProfileInfo = () => {
