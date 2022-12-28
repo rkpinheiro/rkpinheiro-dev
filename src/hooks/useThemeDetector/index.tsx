@@ -11,14 +11,9 @@ export const useThemeDetector = () => {
 
   useEffect(() => {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)")
-    darkThemeMq.addEventListener
-      ? darkThemeMq.addEventListener("change", mqListener)
-      : darkThemeMq.addListener(mqListener)
+    darkThemeMq.addEventListener("change", mqListener)
 
-    return () =>
-      darkThemeMq.removeEventListener
-        ? darkThemeMq.removeEventListener("change", mqListener)
-        : darkThemeMq.removeListener(mqListener)
+    return () => darkThemeMq.removeEventListener("change", mqListener)
   }, [])
 
   return isDarkTheme

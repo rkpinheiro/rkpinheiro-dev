@@ -21,6 +21,15 @@ module.exports = {
         path: `${__dirname}/src/images/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-polyfill-io`,
+      options: {
+        features: [
+          `MediaQueryList.prototype.addEventListener`,
+          `MediaQueryList.prototype.removeEventListener`,
+        ],
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
