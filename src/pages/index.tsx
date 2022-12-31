@@ -6,7 +6,6 @@ import { ProfileInfo } from "../components/ProfileInfo"
 import { Theme, ThemeProvider, createTheme } from "@mui/material/styles"
 import { ThemeSwicher } from "../components/ThemeSwicher"
 import { AppBar, Toolbar, Box } from "@mui/material"
-import { useThemeDetector } from "../hooks/useThemeDetector"
 
 const defaultTheme = createTheme({
   palette: { mode: "light" },
@@ -16,10 +15,7 @@ const createNewTheme = (mode: "dark" | "light") =>
   createTheme({ ...defaultTheme, ...{ palette: { mode } } })
 
 export default function Home() {
-  const isDarkTheme = useThemeDetector() // OS Based Theme
-  const [theme, setTheme] = useState<Theme>(
-    isDarkTheme ? createNewTheme("dark") : defaultTheme
-  )
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
 
   const handleChange = () => {
     setTheme(t =>
